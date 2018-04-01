@@ -64,8 +64,18 @@ Tokenizator::StringToTokens(std::string str) {
         if (!isComment) {
             deleteComment(&str, &isComment);
 
-            char *tmp;
-            char *cstr = new char[str.length() + 1];
+            char* tmp;
+
+            char *cstr;
+            try {
+                cstr = new char[str.length() + 1];
+            } catch (std::bad_alloc& e) {
+                debug_print("\nFile: %s\n" , __FILE__ ,
+                              "Function: $s\n" , __PRETTY_FUNCTION__ ,
+                              "Line: %d\n" , __LINE__ ,
+                              "Cannot throw memory for cstr\n\n");
+                return FALSE;
+            }
 
             std::strcpy(cstr, str.c_str());
             tmp = strtok(cstr, " ");
@@ -73,12 +83,13 @@ Tokenizator::StringToTokens(std::string str) {
             if (tmp != 0)
                 while (tmp != NULL) {
                     if(!IsValidToken(tmp)) {
-                        errors.push_back(std::pair<std::string , size_t> ("Invalid Token " + std::string(tmp) , line));
+                        Tokens token ("Invalid Token: " + std::string(tmp) , line);
+                        errors.push_back(token);
                         tmp = strtok(NULL, " ");
                         continue;
                     }
 
-                    array.push_back(std::pair<std::string, size_t>(tmp, line));
+                    array.push_back(Tokens (tmp, line));
                     tmp = strtok(NULL, " ");
                 }
             else
@@ -165,16 +176,16 @@ Tokenizator::printArrayToConsole() {
     std::cout << std::endl;
 
     for(int i=0; i<lenght; ++i) {
-        std::cout << "Token: " << i << " " << array[i].first                                        << std::endl;
-        std::cout << "Line: " << array[i].second                                                    << std::endl;
+        std::cout << "Token: " << i << " " << array[i].getToken()                                   << std::endl;
+        std::cout << "Line: " << array[i].getLine()                                                 << std::endl;
         std::cout << std::endl;
      }
 
     std::cout << std::endl;
     std::cout << "ERROR:"                                                                          << std::endl;
-    for(int i=0; i<lenght; ++i) {
-        std::cout << "Error: " << i << " " << errors[i].first                                       << std::endl;
-        std::cout << "Line: " << errors[i].second                                                   << std::endl;
+    for(int i=0; i<lenghtErr; ++i) {
+        std::cout << "Error: " << i << " " << errors[i].getToken()                                  << std::endl;
+        std::cout << "Line: " << errors[i].getLine()                                                << std::endl;
     }
     std::cout << std::endl;
 
@@ -200,8 +211,8 @@ Tokenizator::printArrayToFile() {
         fout << std::endl;
 
         for(int i=0; i<lenght; ++i) {
-            fout << "Token: " << i << " " << array[i].first                                        << std::endl;
-            fout << "Line: " << array[i].second                                                    << std::endl;
+            fout << "Token: " << i << " " << array[i].getToken()                                   << std::endl;
+            fout << "Line: " << array[i].getLine()                                                 << std::endl;
             fout << std::endl;
         }
 
@@ -209,8 +220,8 @@ Tokenizator::printArrayToFile() {
         fout << "ERROR:"                                                                          << std::endl;
         fout << std::endl;
         for(int i=0; i<lenghtErr; ++i) {
-            fout << "Error: " << i << " " << errors[i].first                                      << std::endl;
-            fout << "Line: " << errors[i].second                                                  << std::endl;
+            fout << "Error: " << i << " " << errors[i].getToken()                                 << std::endl;
+            fout << "Line: " << errors[i].getLine()                                               << std::endl;
         }
         fout << std::endl;
 

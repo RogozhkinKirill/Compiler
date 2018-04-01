@@ -17,10 +17,27 @@
 #include "../../errors_warning.h"
 
 
+struct Tokens {
+public:
+    Tokens(std::string str , size_t line) :
+            token(str),
+            line(line) {}
+    ~Tokens() {}
+
+    std::string getToken() {return token;}
+    size_t getLine() {return line;}
+
+protected:
+    std::string token;
+    size_t line;
+
+};
+
+
 class Tokenizator {
 public:
-    std::vector<std::pair<std::string , size_t> > array;
-    std::vector<std::pair<std::string , size_t> > errors;
+    std::vector<Tokens> array;
+    std::vector<Tokens> errors;
 //    ValidSymbols language;
     size_t line;
 
@@ -39,6 +56,5 @@ public:
     inline bool deleteOneLineComment(std::string*);
     inline bool deleteMultiLineComments(std::string* str , bool* isComment);
 };
-
 
 #endif //COMPILER_TOKENIZATOR_H

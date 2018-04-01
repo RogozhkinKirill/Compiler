@@ -13,9 +13,9 @@ Line: 5
 
 ERROR:
 
-Error: 0 Invalid Token World!!!
+Error: 0 Invalid Token: World!!!
 Line: 1
-Error: 1 Invalid Token Work
+Error: 1 Invalid Token: Work
 Line: 5
 
 ================================================================================
