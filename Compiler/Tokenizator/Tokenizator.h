@@ -19,11 +19,15 @@
 
 class Tokenizator {
 public:
+    std::vector<std::pair<std::string , size_t> > array;
+    std::vector<std::pair<std::string , size_t> > errors;
+//    ValidSymbols language;
+    size_t line;
+
     Tokenizator();
     Tokenizator(std::ifstream* file);
 
     ~Tokenizator();
-
 
     bool FileToString(std::ifstream* file);
     bool StringToTokens(std::string str);
@@ -31,8 +35,9 @@ public:
     bool printArrayToConsole();
     bool printArrayToFile();
 
-    std::vector<std::pair<std::string , size_t> > array;
-    size_t line;
+    inline bool deleteComment(std::string* str , bool* isComment);
+    inline bool deleteOneLineComment(std::string*);
+    inline bool deleteMultiLineComments(std::string* str , bool* isComment);
 };
 
 
