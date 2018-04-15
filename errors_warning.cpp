@@ -17,9 +17,6 @@ getFile(std::string str) {
         file->erase(lastSlash, file->size());
         *file += str;
 
-        std::ofstream fout(*file, std::ios_base::trunc);
-        fout.close();
-
         return *file;
     }
 }

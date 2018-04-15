@@ -1,6 +1,7 @@
 /;
  ; Testing Checker
  ;/
-push 0x5
-push 0x6
-pop %eax
+push 5
+push 6
+mul
+pop %e1x

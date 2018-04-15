@@ -10,32 +10,37 @@
 #include <vector>
 #include "../Tokenizator/Tokenizator.h"
 #include "../Language.h"
+#include "../Compiler.h"
 
 struct CheckerElement {
 public:
-    CheckerElement(std::string name , size_t line , _flags flag) :
+    CheckerElement(size_t name , size_t line , _flags flag) :
             name(name) , line(line) , flag(flag) {}
    ~CheckerElement() {}
 
-    std::string getToken() {return name;}
-    size_t      getLine()  {return line;}
-    size_t      getFlag()  {return flag;}
+    size_t getName() {return name;}
+    size_t getLine() {return line;}
+    _flags getFlag() {return flag;}
 
 protected:
-    std::string name;
+    size_t name;
     size_t line;
     _flags flag;
 };
 
-class Checker {
+class Checker : public Language {
 public:
     std::vector<CheckerElement> array;
-    std::vector<CheckerElement> error;
+    std::vector<Tokens> error;
 
-    Checker() {}
+    Checker() : Language() {}
+    Checker(std::vector<Tokens> tokens) : Language() {checking(tokens);}
    ~Checker() {}
 
-    bool isFunction(Tokens token);
+    bool checking(std::vector<Tokens> tokens);
+
+    bool printArrayToConsole();
+    bool printArrayToFile();
 };
 
 

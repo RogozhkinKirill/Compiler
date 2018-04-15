@@ -12,7 +12,10 @@
 class Compiler {
 public:
     Tokenizator tokenizator;
-    Checker checker;
+//    Checker checker_section;
+
+    std::map<std::string , size_t> jumps;
+    std::map<std::string , size_t> variables;
 
     Compiler() {}
     Compiler(std::string file);

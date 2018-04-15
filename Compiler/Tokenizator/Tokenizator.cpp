@@ -196,8 +196,8 @@ Tokenizator::printArrayToConsole() {
 
 bool
 Tokenizator::printArrayToFile() {
-    std::string file = getFile("\\Tokenizator_result.txt");
-    std::ofstream fout(file);
+    std::string file = getFile("\\Test_result.txt");
+    std::ofstream fout(file ,  std::ofstream::out | std::ofstream::app);
 
     if(fout.is_open()) {
         size_t lenght = array.size();

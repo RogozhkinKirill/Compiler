@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <iostream>
+
 #include "Language.h"
 
 /***
@@ -75,7 +78,7 @@
  *                  variable:
  *                  ff - variable
  */
-Language::Language() {
+Language::Language() : LanguageElement() {
     ADD_FUNCTION(0x00 , "int");
 
     ADD_FUNCTION(0x010000 , "mov");
@@ -136,5 +139,80 @@ Language::Language() {
     ADD_REGISTER(0x0f , "%e15");
 }
 
+LanguageElement*
+Language::isFunction(std::string str) {
+    auto search = validFunctions.find(str);
+    if(search != validFunctions.end() ) {
+        LanguageElement* element = new LanguageElement;
+        element->code = search->second;
+        element->flag = FUNCTION_;
+
+        return element;
+    }
+
+    return nullptr;
+}
+
+LanguageElement*
+Language::isRegister(std::string str) {
+    auto search = registers.find(str);
+    if(search != registers.end() ) {
+        LanguageElement* element = new LanguageElement;
+        element->code = search->second;
+        element->flag = REGISTER_   ;
+
+        return element;
+    }
+
+    return nullptr;
+}
+
+LanguageElement*
+Language::isNumber(std::string str) {
+    size_t length = str.capacity();
+    size_t result = 0;
+    for(size_t i=0; i<length; ++i) {
+        if(str[i] >= '0' && str[i] <= '9')
+            result = result * 10 + str[i] - '0';
+        else
+            return nullptr;
+    }
+
+    LanguageElement* element = new LanguageElement;
+    element->flag = NUMBER_;
+    element->code = result;
+    return element;
+}
+
+LanguageElement*
+Language::what(std::string str) {
+    LanguageElement* element = nullptr;
+
+    element = isFunction(str);
+    if(element != nullptr) return element;
+
+    element = isRegister(str);
+    if(element != nullptr) return element;
+
+    element = isNumber(str);
+    if(element != nullptr) return element;
+
+    element = new LanguageElement(ERROR_ , 0);
+
+    return element;
+}
+
+
+
+std::string
+flagToString(_flags flag) {
+    switch(flag) {
+        case ERROR_ :    { return "ERROR";}    break;
+        case FUNCTION_ : { return "FUNCTION";} break;
+        case NUMBER_ :   { return "NUMBER";}   break;
+        case REGISTER_ : { return "REGISTER";} break;
+        case VARIABLE_ : { return "VARIABLE";} break;
+    }
+}
 
 #include "Language.h"

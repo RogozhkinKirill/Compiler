@@ -6,8 +6,8 @@
 
 #define language_symbols(str , name) const std::string name = str;
 #define enum_code(code , name) name = code
-#define ADD_FUNCTION(code , name) validFunctions.insert(std::pair<std::string , int> (name , code) );
-#define ADD_REGISTER(code , name) registers.insert(std::pair<std::string , int> (name , code));
+#define ADD_FUNCTION(code , name) validFunctions.insert(std::pair<std::string , size_t> (name , code) );
+#define ADD_REGISTER(code , name) registers.insert(std::pair<std::string , size_t> (name , code));
 
 
 //Special symbols
@@ -26,20 +26,44 @@ enum _flags {
 
 
 
-//Valid symbols
-class Language {
-
+class LanguageElement {
 public:
-    Language();
-   ~Language() {}
-    bool IsValidToken(std::string str);
+    LanguageElement() {}
+    LanguageElement(_flags flag , size_t code) : flag(flag) , code(code) {}
 
-protected:
-//    std::map<std::string , std::string> validSymbols;
-    std::map<std::string , std::string> validFunctions;
-    std::map<std::string , std::string> registers;
+    virtual
+   ~LanguageElement() {}
+
+    _flags getFlag() {return flag;}
+    size_t getCode() {return code;}
+
+//protected:
+    _flags flag;
+    size_t code;
 };
 
 
+//Valid symbols
+class Language : public LanguageElement {
+
+public:
+    Language();
+
+    virtual
+   ~Language() {}
+
+    LanguageElement* what(std::string str);
+    LanguageElement* isFunction(std::string str);
+    LanguageElement* isRegister(std::string str);
+    LanguageElement* isNumber(std::string str);
+
+private:
+//    std::map<std::string , std::string> validSymbols;
+    std::map<std::string , size_t> validFunctions;
+    std::map<std::string , size_t> registers;
+};
+
+
+std::string flagToString(_flags);
 
 #endif //COMPILER_LANGUAGE_H
