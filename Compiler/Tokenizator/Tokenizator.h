@@ -38,7 +38,6 @@ class Tokenizator {
 public:
     std::vector<Tokens> array;
     std::vector<Tokens> errors;
-//    ValidSymbols language;
     size_t line;
 
     Tokenizator();

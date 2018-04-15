@@ -6,8 +6,16 @@
 #define COMPILER_COMPILER_H
 
 
-class Compiler {
+#include "Tokenizator/Tokenizator.h"
+#include "Checker/Checker.h"
 
+class Compiler {
+public:
+    Tokenizator tokenizator;
+    Checker checker;
+
+    Compiler() {}
+   ~Compiler() {}
 };
 
 

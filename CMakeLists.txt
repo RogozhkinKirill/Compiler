@@ -18,6 +18,6 @@ add_executable(Compiler main.cpp
                     Compiler/Checker/Checker.h
 
                     Compiler/Logic/Logic.cpp
-                    Compiler/Logic/Logic.h Compiler/Language.h errors_warning.cpp)
+                    Compiler/Logic/Logic.h Compiler/Language.h errors_warning.cpp Compiler/Language.cpp)
 
 add_definitions(-DDEBUG)

@@ -1,5 +1,6 @@
-Hello, World!!! /;fjdshfl
-
- ; kfsjkl
-;sjfk 
-;/now  Work ; jfk
+/;
+ ; Testing Checker
+ ;/
+push 0x5
+push 0x6
+pop %eax
