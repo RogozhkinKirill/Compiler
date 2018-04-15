@@ -1,6 +1,5 @@
 #include "Language.h"
 
-
 /***
  * Encoding is
  *          first two numbers in a function code is
@@ -35,6 +34,36 @@
  *                  10 - and
  *                  11 - nand
  *                  12 - not
+ *
+ *          SOURCE and DESTINATION:
+ *                  stack:
+ *                  00 - stack
+ *
+ *                  registers:
+ *                  01 - %e1x
+ *                  02 - %e2x
+ *                  03 - %e3x
+ *                  04 - %e4x
+ *                  05 - %e5x
+ *                  06 - %e6x
+ *                  07 - %e7x
+ *                  08 - %e8x
+ *                  09 - %e9x
+ *                  0a - %e10
+ *                  0b - %e11
+ *                  0c - %e12
+ *
+ *                  0d - %e13
+ *                  0d - %epc
+ *
+ *                  0e - %e14
+ *                  0e - %esp
+ *
+ *                  0f - %e15
+ *                  0f - %elr
+ *
+ *                  variable:
+ *                  ff - variable
  */
 Language::Language() {
     ADD_FUNCTION(0x00 , "int");
@@ -63,15 +92,29 @@ Language::Language() {
     ADD_FUNCTION(0x120000 , "not");
 
 
-    validFunctions.insert(std::pair<std::string , int> ("mov" , 0x1) );
 
-    validFunctions.insert(std::pair<std::string , int> ("push" , 0xccff01) );
-    validFunctions.insert(std::pair<std::string , int> ("pop" , 0xccff02) );
+    ADD_REGISTER(0x01 , "%e1x");
+    ADD_REGISTER(0x02 , "%e2x");
+    ADD_REGISTER(0x03 , "%e3x");
+    ADD_REGISTER(0x04 , "%e4x");
+    ADD_REGISTER(0x05 , "%e5x");
+    ADD_REGISTER(0x06 , "%e6x");
+    ADD_REGISTER(0x07 , "%e7x");
+    ADD_REGISTER(0x08 , "%e8x");
+    ADD_REGISTER(0x09 , "%e9x");
+    ADD_REGISTER(0x0a , "%e10");
+    ADD_REGISTER(0x0b , "%e11");
+    ADD_REGISTER(0x0c , "%e12");
 
+    ADD_REGISTER(0x0d , "%e13");
+    ADD_REGISTER(0x0d , "%epc");
 
-    registers.insert(std::pair<std::string , int> ("%eax" , 0x1));
-    registers.insert(std::pair<std::string , int> ("%ebx" , 0x2));
-    registers.insert(std::pair<std::string , int> ("%ecx" , 0x3));
-    registers.insert(std::pair<std::string , int> ("%edx" , 0x4));
+    ADD_REGISTER(0x0e , "%e14");
+    ADD_REGISTER(0x0e , "%esp");
 
+    ADD_REGISTER(0x0f , "%e15");
+    ADD_REGISTER(0x0f , "%e15");
 }
+
+
+#include "Language.h"

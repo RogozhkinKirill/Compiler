@@ -7,6 +7,7 @@
 #define language_symbols(str , name) const std::string name = str;
 #define enum_code(code , name) name = code
 #define ADD_FUNCTION(code , name) validFunctions.insert(std::pair<std::string , int> (name , code) );
+#define ADD_REGISTER(code , name) registers.insert(std::pair<std::string , int> (name , code));
 
 
 //Special symbols
