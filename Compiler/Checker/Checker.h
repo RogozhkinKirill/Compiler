@@ -32,14 +32,10 @@ public:
     std::vector<CheckerElement> array;
     std::vector<CheckerElement> error;
 
-    Checker();
-   ~Checker();
-
-    bool checking(std::vector<Tokens> tokens);
+    Checker() {}
+   ~Checker() {}
 
     bool isFunction(Tokens token);
-    bool isNumber(Tokens token);
-    bool isRegister(Tokens token);
 };
 
 

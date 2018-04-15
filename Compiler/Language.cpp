@@ -78,10 +78,10 @@
 Language::Language() {
     ADD_FUNCTION(0x00 , "int");
 
-    ADD_FUNCTION(0x01 , "mov");
+    ADD_FUNCTION(0x010000 , "mov");
 
-    ADD_FUNCTION(0x020000 , "push");
-    ADD_FUNCTION(0x030000 , "pop");
+    ADD_FUNCTION(0x0200 , "push");
+    ADD_FUNCTION(0x0300 , "pop");
 
     ADD_FUNCTION(0x040000 , "inc");
     ADD_FUNCTION(0x050000 , "dec");
@@ -99,17 +99,17 @@ Language::Language() {
     ADD_FUNCTION(0x0f0000 , "xor");
     ADD_FUNCTION(0x100000 , "and");
     ADD_FUNCTION(0x110000 , "nand");
-    ADD_FUNCTION(0x120000 , "not");
+    ADD_FUNCTION(0x1200 , "not");
 
     ADD_FUNCTION(0x130000 , "cmp");
 
-    ADD_FUNCTION(0x140000 , "jmp");
-    ADD_FUNCTION(0x150000 , "je");
-    ADD_FUNCTION(0x160000 , "jg");
-    ADD_FUNCTION(0x170000 , "jl");
-    ADD_FUNCTION(0x180000 , "jge");
-    ADD_FUNCTION(0x190000 , "jle");
-    ADD_FUNCTION(0x1a0000 , "jgl");
+    ADD_FUNCTION(0x1400 , "jmp");
+    ADD_FUNCTION(0x1500 , "je");
+    ADD_FUNCTION(0x1600 , "jg");
+    ADD_FUNCTION(0x1700 , "jl");
+    ADD_FUNCTION(0x1800 , "jge");
+    ADD_FUNCTION(0x1900 , "jle");
+    ADD_FUNCTION(0x1a00 , "jgl");
 
 
 

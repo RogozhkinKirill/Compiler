@@ -35,7 +35,7 @@ public:
     bool IsValidToken(std::string str);
 
 protected:
-    std::map<std::string , std::string> validSymbols;
+//    std::map<std::string , std::string> validSymbols;
     std::map<std::string , std::string> validFunctions;
     std::map<std::string , std::string> registers;
 };

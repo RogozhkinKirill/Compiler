@@ -15,7 +15,8 @@ public:
     Checker checker;
 
     Compiler() {}
-   ~Compiler() {}
+    Compiler(std::string file);
+    ~Compiler() {}
 };
 
 
