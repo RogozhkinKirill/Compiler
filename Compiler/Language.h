@@ -21,7 +21,7 @@ enum _flags {
     enum_code(0x1 , FUNCTION_),
     enum_code(0x2 , NUMBER_),
     enum_code(0x3 , REGISTER_),
-    enum_code(0x4 , VARIABLE_)
+    enum_code(0xff , VARIABLE_)
 };
 
 
@@ -34,7 +34,7 @@ public:
    ~Language() {}
     bool IsValidToken(std::string str);
 
-private:
+protected:
     std::map<std::string , std::string> validSymbols;
     std::map<std::string , std::string> validFunctions;
     std::map<std::string , std::string> registers;

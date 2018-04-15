@@ -5,9 +5,9 @@
  *          first two numbers in a function code is
  *                                          code of FUNCTION
  *          second two numbers in a function code is
- *                                          code of SOURCE
+ *                                          code of DESTINATION
  *          third two numbers in a function code is
- *                                          code os DESTINATION
+ *                                          code os SOURCE
  *
  *
  *          FUNCTION:
@@ -34,6 +34,16 @@
  *                  10 - and
  *                  11 - nand
  *                  12 - not
+ *
+ *                  13 - cmp
+ *
+ *                  14 - jmp
+ *                  15 - je
+ *                  16 - jg
+ *                  17 - jl
+ *                  18 - jge
+ *                  19 - jle
+ *                  1a - jgl
  *
  *          SOURCE and DESTINATION:
  *                  stack:
@@ -90,6 +100,16 @@ Language::Language() {
     ADD_FUNCTION(0x100000 , "and");
     ADD_FUNCTION(0x110000 , "nand");
     ADD_FUNCTION(0x120000 , "not");
+
+    ADD_FUNCTION(0x130000 , "cmp");
+
+    ADD_FUNCTION(0x140000 , "jmp");
+    ADD_FUNCTION(0x150000 , "je");
+    ADD_FUNCTION(0x160000 , "jg");
+    ADD_FUNCTION(0x170000 , "jl");
+    ADD_FUNCTION(0x180000 , "jge");
+    ADD_FUNCTION(0x190000 , "jle");
+    ADD_FUNCTION(0x1a0000 , "jgl");
 
 
 
