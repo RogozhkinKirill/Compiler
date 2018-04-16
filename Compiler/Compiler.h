@@ -8,11 +8,13 @@
 
 #include "Tokenizator/Tokenizator.h"
 #include "Checker/Checker.h"
+#include "Logic/Logic.h"
 
 class Compiler {
 public:
     Tokenizator tokenizator;
-//    Checker checker_section;
+    Checker checker;
+    Logic logic;
 
     std::map<std::string , size_t> jumps;
     std::map<std::string , size_t> variables;

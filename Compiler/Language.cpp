@@ -75,6 +75,9 @@
  *                  0f - %e15
  *                  0f - %elr
  *
+ *                  number:
+ *                  ee - number
+ *
  *                  variable:
  *                  ff - variable
  */
@@ -211,7 +214,10 @@ flagToString(_flags flag) {
         case FUNCTION_ : { return "FUNCTION";} break;
         case NUMBER_ :   { return "NUMBER";}   break;
         case REGISTER_ : { return "REGISTER";} break;
+        case LABEL_ :    { return "LABEL";}    break;
         case VARIABLE_ : { return "VARIABLE";} break;
+        case NOTHING_ :  { return "NOTHING";}  break;
+        default :        { return "STRANGE IN _FLAGS";}
     }
 }
 

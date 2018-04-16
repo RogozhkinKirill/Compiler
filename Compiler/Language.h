@@ -21,7 +21,10 @@ enum _flags {
     enum_code(0x1 , FUNCTION_),
     enum_code(0x2 , NUMBER_),
     enum_code(0x3 , REGISTER_),
-    enum_code(0xff , VARIABLE_)
+    enum_code(0x4 , LABEL_),
+    enum_code(0xff , VARIABLE_),
+
+    enum_code(0xdd , NOTHING_)
 };
 
 

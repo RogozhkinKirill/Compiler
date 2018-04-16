@@ -3,6 +3,7 @@
 #include <array>
 #include "Compiler/Tokenizator/Tokenizator.h"
 #include "Compiler/Checker/Checker.h"
+#include "Compiler/Logic/Logic.h"
 
 int main() {
 
@@ -14,6 +15,11 @@ int main() {
         if(tkn.errors.empty() ) {
             Checker chr(tkn.array);
             chr.printArrayToFile();
+
+            if(chr.error.empty() ) {
+                Logic lgc(chr.array);
+                lgc.printArrayToFile();
+            }
         }
 
         fin.close();

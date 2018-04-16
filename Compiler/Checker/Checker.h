@@ -10,7 +10,6 @@
 #include <vector>
 #include "../Tokenizator/Tokenizator.h"
 #include "../Language.h"
-#include "../Compiler.h"
 
 struct CheckerElement {
 public:

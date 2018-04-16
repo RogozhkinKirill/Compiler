@@ -28,7 +28,7 @@ Checker::checking(std::vector<Tokens> tokens)
 
 
 bool
-Checker::printArrayToFile() {
+Checker::printArrayToFile(void) {
     std::string file = getFile("\\Test_result.txt");
     std::ofstream fout(file ,  std::ofstream::out | std::ofstream::app);
 
@@ -69,7 +69,7 @@ Checker::printArrayToFile() {
 }
 
 bool
-Checker::printArrayToConsole() {
+Checker::printArrayToConsole(void) {
     size_t lenght = array.size();
     size_t lenghtErr = error.size();
 

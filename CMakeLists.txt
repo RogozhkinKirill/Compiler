@@ -20,4 +20,4 @@ add_executable(Compiler main.cpp
                     Compiler/Logic/Logic.cpp
                     Compiler/Logic/Logic.h Compiler/Language.h errors_warning.cpp Compiler/Language.cpp)
 
-add_definitions(-DDEBUG)
+add_definitions(-o4)

@@ -3,5 +3,6 @@
  ;/
 push 5
 push 6
-mul
+mul 5 6
 pop %e1x
+int
