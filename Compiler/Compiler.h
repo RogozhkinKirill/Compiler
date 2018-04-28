@@ -1,7 +1,3 @@
-//
-// Created by пользователь on 29.03.2018.
-//
-
 #ifndef COMPILER_COMPILER_H
 #define COMPILER_COMPILER_H
 
@@ -12,16 +8,22 @@
 
 class Compiler {
 public:
+    Compiler() {}
+    Compiler(std::string file) {compiling(file);}
+   ~Compiler() {}
+
+    bool compiling(std::string file);
+
+private:
+    //1st STAGE
     Tokenizator tokenizator;
+    //2nd STAGE
     Checker checker;
+    //3rd STAGE
     Logic logic;
 
     std::map<std::string , size_t> jumps;
     std::map<std::string , size_t> variables;
-
-    Compiler() {}
-    Compiler(std::string file);
-    ~Compiler() {}
 };
 
 

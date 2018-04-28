@@ -20,10 +20,12 @@ Checker::checking(std::vector<Tokens> tokens)
                 error.push_back(tokens[i] );
             else
                 array.push_back(CheckerElement(element->code , tokens[i].getLine() , element->flag) );
+
+            delete element;
         }
     }
 
-    return TRUE;
+    return error.size() == 0;
 }
 
 
@@ -31,6 +33,7 @@ bool
 Checker::printArrayToFile(void) {
     std::string file = getFile("\\Test_result.txt");
     std::ofstream fout(file ,  std::ofstream::out | std::ofstream::app);
+    delete &file;
 
     if(fout.is_open()) {
         size_t lenght = array.size();

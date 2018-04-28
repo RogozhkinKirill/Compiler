@@ -5,8 +5,8 @@
 
 class LogicElement {
 public:
-    LogicElement();
-    LogicElement(size_t ln , _flags f1 , size_t f1_v , _flags f2 , size_t f2_v , _flags f3 , size_t f3_v);
+    explicit LogicElement();
+    explicit LogicElement(size_t ln , _flags f1 , size_t f1_v , _flags f2 , size_t f2_v , _flags f3 , size_t f3_v);
 
     virtual
    ~LogicElement() {}
@@ -44,7 +44,7 @@ public:
 
    ~Logic(void) {}
 
-   bool checkLogic(std::vector<CheckerElement> array);
+    bool checkLogic(std::vector<CheckerElement> array);
     bool printArrayToConsole(void);
 
     bool printArrayToFile(void);
@@ -64,8 +64,6 @@ protected:
     void SkipLine(std::vector<CheckerElement> array ,
                   size_t* i , size_t length , size_t line);
 
-
-    //                     size_t* i , size_t length , size_t line);
 };
 
 

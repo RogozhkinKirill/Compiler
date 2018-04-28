@@ -18,6 +18,12 @@ add_executable(Compiler main.cpp
                     Compiler/Checker/Checker.h
 
                     Compiler/Logic/Logic.cpp
-                    Compiler/Logic/Logic.h Compiler/Language.h errors_warning.cpp Compiler/Language.cpp)
+                    Compiler/Logic/Logic.h
 
-add_definitions(-o4)
+                    Compiler/Language.h
+                    Compiler/Language.cpp
+
+                    errors_warning.cpp
+        )
+
+add_definitions(-o3)

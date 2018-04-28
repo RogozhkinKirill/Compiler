@@ -80,18 +80,21 @@ Tokenizator::StringToTokens(std::string str) {
             std::strcpy(cstr, str.c_str());
             tmp = strtok(cstr, " ");
 
-            if (tmp != 0)
-                while (tmp != NULL) {
+            if (tmp != 0) {
+                while(tmp != NULL) {
                     if(!IsValidToken(tmp)) {
-                        Tokens token ("Invalid Token: " + std::string(tmp) , line);
+                        Tokens token("Invalid Token: " + std::string(tmp), line);
                         errors.push_back(token);
                         tmp = strtok(NULL, " ");
                         continue;
                     }
 
-                    array.push_back(Tokens (tmp, line));
+                    array.push_back(Tokens(tmp, line));
                     tmp = strtok(NULL, " ");
                 }
+
+                delete cstr;
+            }
             else
                 return FALSE;
         }
@@ -198,6 +201,7 @@ bool
 Tokenizator::printArrayToFile() {
     std::string file = getFile("\\Test_result.txt");
     std::ofstream fout(file ,  std::ofstream::out | std::ofstream::app);
+    delete &file;
 
     if(fout.is_open()) {
         size_t lenght = array.size();
@@ -232,3 +236,15 @@ Tokenizator::printArrayToFile() {
         fout.close();
     }
 }
+
+
+//=============================================================================
+//Tokenising
+bool
+Tokenizator::tokenizing(std::ifstream* file) {
+    line = 0;
+    FileToString(file);
+
+    return errors.size() == 0;
+}
+//=============================================================================

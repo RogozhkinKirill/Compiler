@@ -13,7 +13,8 @@
 
 struct CheckerElement {
 public:
-    CheckerElement(size_t name , size_t line , _flags flag) :
+    explicit CheckerElement() {}
+    explicit CheckerElement(size_t name , size_t line , _flags flag) :
             name(name) , line(line) , flag(flag) {}
    ~CheckerElement() {}
 

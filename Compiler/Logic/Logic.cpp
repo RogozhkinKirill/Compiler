@@ -71,13 +71,9 @@ Logic::checkLogic(std::vector<CheckerElement> array) {
                 delete element;
             }
         }
-
-        /* Check label
-         if(array[i].getFlag() == LABEL_)
-            if(array[i + 1].getLine() == currentLine)
-                error.push_back(std::pair<std::string , size_t> ("More then label on line" , currentLine) );
-        */
     }
+
+    return error.size() == 0;
 }
 
 LogicElement*
@@ -96,7 +92,9 @@ Logic::checkFunction(std::vector<CheckerElement> array ,
 LogicElement*
 Logic::checkNonParamFunction(std::vector<CheckerElement> array ,
                                     size_t* i , size_t length , size_t line) {
-    if(length < (*i)+1 || array[*i+1].getLine() == line)
+    CheckerElement chrEl = array[(*i)+1];
+    size_t curLine = chrEl.getLine();
+    if(length < (*i)+1 || curLine == line)
         return nullptr;
     else {
         LogicElement* element = new LogicElement(line , array[*i].getFlag() , array[*i].getName() ,
@@ -195,6 +193,7 @@ bool
 Logic::printArrayToFile(void) {
     std::string file = getFile("\\Test_result.txt");
     std::ofstream fout(file ,  std::ofstream::out | std::ofstream::app);
+    delete &file;
 
     if(fout.is_open()) {
         size_t length = array.size();

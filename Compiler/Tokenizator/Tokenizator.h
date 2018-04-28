@@ -45,11 +45,13 @@ public:
 
     ~Tokenizator();
 
-    bool FileToString(std::ifstream* file);
-    bool StringToTokens(std::string str);
-
+    bool tokenizing(std::ifstream* file);
     bool printArrayToConsole();
     bool printArrayToFile();
+protected:
+    bool FileToString(std::ifstream* file);
+
+    bool StringToTokens(std::string str);
 
     inline bool deleteComment(std::string* str , bool* isComment);
     inline bool deleteOneLineComment(std::string*);

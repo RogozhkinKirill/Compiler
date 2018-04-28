@@ -1,18 +1,29 @@
 #include "Compiler.h"
 
-Compiler::Compiler(std::string file) {
+bool
+Compiler::compiling(std::string file) {
     std::ifstream fin (file);
     if(fin.is_open() ) {
-        tokenizator.FileToString(&fin);
+        bool TokenizingStageResult = tokenizator.tokenizing(&fin);
         tokenizator.printArrayToFile();
 
-        if(tokenizator.errors.empty()) {
-            checker.checking(tokenizator.array);
+        if(TokenizingStageResult) {
+            bool CheckingStageResult = checker.checking(tokenizator.array);
             checker.printArrayToFile();
 
-            if (checker.error.empty()) {
-
+            if(CheckingStageResult ) {
+                bool CheckingLogicStageResult = logic.checkLogic(checker.array);
+                logic.printArrayToFile();
             }
         }
+
+        fin.close();
+    }
+    else {
+        std::cout << "Maybe next time I will work" << std::endl;
+        //Time delay
+        for(int i=0; i<700000000; ++i) {}
+        std::cout << "File does not exist..." << std::endl;
+        std::cout << "Try again" << std::endl;
     }
 }
