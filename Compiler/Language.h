@@ -6,8 +6,7 @@
 
 #define language_symbols(str , name) const std::string name = str;
 #define enum_code(code , name) name = code
-#define ADD_FUNCTION(code , name) validFunctions.insert(std::pair<std::string , size_t> (name , code) );
-#define ADD_REGISTER(code , name) registers.insert(std::pair<std::string , size_t> (name , code));
+
 
 
 //Special symbols
@@ -61,7 +60,8 @@ public:
     LanguageElement* isNumber(std::string str);
 
 private:
-//    std::map<std::string , std::string> validSymbols;
+    //TODO: come up an idea how to set valid simbols
+    //std::map<std::string , std::string> validSymbols;
     std::map<std::string , size_t> validFunctions;
     std::map<std::string , size_t> registers;
 };

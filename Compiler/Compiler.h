@@ -24,6 +24,8 @@ private:
 
     std::map<std::string , size_t> jumps;
     std::map<std::string , size_t> variables;
+
+    bool createBinaryFile(std::vector<LogicElement> LogicResult);
 };
 
 

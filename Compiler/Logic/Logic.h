@@ -11,24 +11,24 @@ public:
     virtual
    ~LogicElement() {}
 
-   inline size_t getLine() {return line;}
-   inline _flags getFlag(size_t i);
-   inline size_t getValue(size_t i);
+   size_t getLine() {return line;}
+   _flags getFlag(size_t i);
+   size_t getValue(size_t i);
 
     void initLine(size_t line) {this->line = line;}
     void initValue(size_t i , size_t value);
     void initFlag(size_t i , _flags flag);
+
 protected:
-
     size_t line;
+
     _flags flag1;
-
     size_t flag1_Value;
+
     _flags flag2;
-
     size_t flag2_Value;
-    _flags flag3;
 
+    _flags flag3;
     size_t flag3_Value;
 };
 

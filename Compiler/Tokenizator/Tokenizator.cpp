@@ -43,7 +43,7 @@ bool
 IsValidToken(std::string tmp) {
     size_t lenght = tmp.size();
     for(int i=0; i<lenght; ++i) {
-        if(tmp[i] == 'r') return FALSE;
+
     }
 
     return TRUE;

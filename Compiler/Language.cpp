@@ -3,6 +3,9 @@
 
 #include "Language.h"
 
+#define ADD_FUNCTION(code , name) validFunctions.insert(std::pair<std::string , size_t> (name , code) );
+#define ADD_REGISTER(code , name) registers.insert(std::pair<std::string , size_t> (name , code));
+
 /***
  * Encoding is
  *          first two numbers in a function code is

@@ -1,9 +1,5 @@
 /;
  ; Testing Checker
  ;/
-push 5
-push 6
-mul 5 6
-pop %e1x
-inc %e1x %e1x
-int
+or        %e2x   %e13
+
